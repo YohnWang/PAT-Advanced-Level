@@ -33,10 +33,10 @@ int main()
             v[i].push_back({id,score,i+1,0});
         }
     }
+    auto cmp=[](student &a,student &b)->bool
+             {if(a.score==b.score)return a.id<b.id;else return a.score>b.score; };
     for(int i=0;i<N;i++)
-        sort(begin(v[i]),end(v[i]),
-             [](student &a,student &b)->bool
-             {if(a.score==b.score)return a.id<b.id;else return a.score>b.score; });
+        sort(begin(v[i]),end(v[i]),cmp);
     for(int i=0;i<N;i++)
     {
         int rank{1},_count{1};
@@ -58,9 +58,7 @@ int main()
             finish.push_back(v[i][j]);
         }
     }
-    sort(begin(finish),end(finish),
-             [](student &a,student &b)->bool
-             {if(a.score==b.score)return a.id<b.id;else return a.score>b.score; });
+    sort(begin(finish),end(finish),cmp);
     cout<<item<<endl;
     int rank{1},_count{1};
     printf("%013lld",finish[0].id);
