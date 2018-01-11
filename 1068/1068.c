@@ -10,7 +10,8 @@ int cmp(const void *a,const void *b)
 
 int output[201];
 int nend;
-int calc;
+int flag=1;
+int start;
 
 void print(int a[],int n)
 {
@@ -22,9 +23,7 @@ void print(int a[],int n)
 
 void dfs(int a[],int n,int k,int count,int index,int dest)
 {
-    calc++;
-    if(calc>1000000)
-        return ;
+
     count+=a[k];
     if(count==dest)
     {
@@ -36,7 +35,12 @@ void dfs(int a[],int n,int k,int count,int index,int dest)
     else if(count<dest)
     {
         output[index]=a[k];
-        for(int i=k+1;i<n&&count+a[i]<=dest;i++)
+        if(index+start==n-1) //counting all coins but not enough,it means no solution
+        {
+            flag=0;
+            return ;
+        }
+        for(int i=k+1;i<n&&count+a[i]<=dest&&flag;i++)
             dfs(a,n,i,count,index+1,dest);
     }
 }
@@ -53,7 +57,7 @@ int main(int argc,char *argv[])
         a[i]=x;
     }
     qsort(a,n,sizeof(a[0]),cmp);
-    for(int i=0;i<n;i++)
-        dfs(a,n,i,0,0,dest);
+    for(int i=0;i<n && flag;i++)
+        dfs(a,n,start=i,0,0,dest);
     printf("No Solution");
 }
