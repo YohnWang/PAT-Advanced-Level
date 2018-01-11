@@ -10,23 +10,33 @@ int cmp(const void *a,const void *b)
 
 int output[201];
 int nend;
+int calc;
+
+void print(int a[],int n)
+{
+    printf("%d",a[0]);
+    for(int i=1;i<n;i++)
+        printf(" %d",a[i]);
+    printf("\n");
+}
 
 void dfs(int a[],int n,int k,int count,int index,int dest)
 {
+    calc++;
+    if(calc>1000000)
+        return ;
     count+=a[k];
     if(count==dest)
     {
         output[index]=a[k];
         nend=index+1;
-        printf("%d",output[0]);
-        for(int i=1;i<nend;i++)
-            printf(" %d",output[i]);
+        print(output,nend);
         exit(0);
     }
     else if(count<dest)
     {
         output[index]=a[k];
-        for(int i=k+1;i<n;i++)
+        for(int i=k+1;i<n&&count+a[i]<=dest;i++)
             dfs(a,n,i,count,index+1,dest);
     }
 }
