@@ -34,7 +34,10 @@ int main()
         for(auto iter=a[s[i]].rbegin();iter!=a[s[i]].rend();iter++)
         {
             if(is_sym(i,*iter))
+            {
                 m=max(m,*iter-i+1);
+                break;
+            }
         }
     }
     printf("%d",m);
