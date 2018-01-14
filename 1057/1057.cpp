@@ -1,4 +1,3 @@
-#include<iostream>
 #include<algorithm>
 #include<vector>
 #include<set>
@@ -16,8 +15,10 @@ public:
     {
         if(Min.size()<=Max.size())
             Min.insert(x);
-        else
+        else if(*Min.begin()<x)
             Max.insert(x);
+        else
+            Min.insert(x);
     }
     void erase(int x)
     {
@@ -81,7 +82,7 @@ void pop()
 void push()
 {
     int key;
-    cin>>key;
+    scanf("%d",&key);
     s.push_back(key);
     M.push(key);
 }
