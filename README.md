@@ -5,4 +5,4 @@ PAT 甲级 练习
 
 后序会有使用markdown编辑的解析 以方便浏览
 
-![pikachu](https://github.com/YohnWang/PAT-Advanced-Level/picture/pikachu.jpg)
+![pikachu](https://github.com/YohnWang/PAT-Advanced-Level/blob/master/picture/pikachu.jpg)
