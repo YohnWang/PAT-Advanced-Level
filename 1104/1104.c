@@ -11,7 +11,7 @@ int main(int argc,char *argv[])
         scanf("%lf",&a[i]);
     for(int i=1;i<=n;i++)
     {
-        long long int appear=1LL*i*(n-i+1);
+        long long int appear=1LL*i*(n-i+1); //k-th number will appear k*(n-k+1)
         sum+=a[i]*appear;
     }
     printf("%.2lf",sum);
